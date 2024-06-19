@@ -1,0 +1,59 @@
+spring:
+  application:
+    name: OJ-backend
+  #默认 dev环境
+  profiles:
+    active: dev
+  #支持 swagger3
+  mvc:
+    pathmatch:
+      matching-strategy: ant_path_matcher
+  # session配置
+  session:
+    # 30天过期
+    timeout: 2592000
+  #数据库配置
+  datasource:
+    driver-class-name: com.mysql.cj.jdbc.Driver
+    url: jdbc:mysql://localhost:3306/my_bi_db
+    username: root
+    password: mysql8
+  #文件上传
+  servlet:
+    multipart:
+      # 大小限制
+      max-file-size: 10MB
+  #rabbitmq配置
+  rabbitmq:
+    host: localhost
+    port: 5672
+    password: guest
+    username: guest
+  redis:
+    host: localhost
+    port: 6379
+    database: 0
+    connect-timeout: 5000ms
+server:
+  address: 0.0.0.0
+  port: 8108
+  servlet:
+    context-path: /api
+    #Cookie 30天过期
+    session:
+      cookie:
+        max-age: 2592000
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: false
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl
+  global-config:
+    db-config:
+      logic-delete-field: isDelete #全局逻辑删除的实体字段名
+      logic-delete-value: 1 #逻辑已删除值（默认为1）
+      logic-not-delete-value: 0 #逻辑未删除值(默认为0)
+#鱼聪明AI配置(要放入自己的key)
+yuapi:
+  client:
+    access-key: cr2q5hf54torzntgy0p5bo7lkbhixcwo
+    secret-key: eso938o5ile2y8u4eqvqanvh8wjjj0d7
